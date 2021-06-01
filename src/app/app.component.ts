@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.authService.getCsrfToken().pipe(
       tap(token => sessionStorage.setItem('XSRF-TOKEN', token["XSRF-TOKEN"])),
-      catchError(error => this.router.navigateByUrl('error'))
+      //catchError(error => this.router.navigateByUrl('error'))
     ).subscribe()
   }
 }

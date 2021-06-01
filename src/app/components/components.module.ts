@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MdbModule } from 'mdb-angular-ui-kit';
+
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     PagenotfoundComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MdbModule,
   ],
   exports: [
     PagenotfoundComponent,
-    ErrorComponent
+    ErrorComponent,
   ]
 })
 export class ComponentsModule { }

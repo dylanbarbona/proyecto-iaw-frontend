@@ -1,6 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
+import { Component, HostListener, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import * as authSelectors from '../../store/selectors/auth.selectors'
 import * as authActions from '../../store/actions/auth.action'
@@ -10,9 +9,8 @@ import * as authActions from '../../store/actions/auth.action'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit { 
   constructor(private readonly store: Store){ }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }
