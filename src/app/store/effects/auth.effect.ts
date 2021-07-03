@@ -17,27 +17,16 @@ export class AuthEffects {
   loginUser$ = createEffect(() => this.actions$.pipe(
     ofType(authActions.AuthActionTypes.loginUser),
     mergeMap(({ auth }) => this.authService.login(auth).pipe(
-      map(({ access_token }) => {
-        this.authService.saveToken(access_token)
-        return this.authService.decodeToken(access_token)
-      }),
-      delay(2000),
-      map((profile) => authActions.LoginUserComplete({ profile })),
+      map(({ user }) => authActions.LoginUserComplete({ profile: user })),
       tap(() => this.router.navigate(['/home'])),
       catchError(async () => authActions.LoginUserError())
-    )
-    ),
+    )),
   ))
 
   registerUser$ = createEffect(() => this.actions$.pipe(
     ofType(authActions.AuthActionTypes.registerUser),
     mergeMap(({ auth }) => this.authService.register(auth).pipe(
-      map(({ access_token }) => {
-        this.authService.saveToken(access_token)
-        return this.authService.decodeToken(access_token)
-      }),
-      delay(2000),
-      map((profile) => authActions.RegisterUserComplete({ profile })),
+      map(({ user }) => authActions.RegisterUserComplete({ profile: user })),
       tap(() => this.router.navigate(['/home'])),
       catchError(async () => authActions.RegisterUserError())
     )
@@ -48,8 +37,8 @@ export class AuthEffects {
     ofType(authActions.AuthActionTypes.checkAuth),
     mergeMap(() => {
       return this.authService.check().pipe(
-        map(({ access_token, error }) => {
-          if(error)
+        map(({ ok }) => {
+          if(!ok)
             return authActions.CheckAuthError()
           return authActions.CheckAuthComplete()
         }),
@@ -62,14 +51,9 @@ export class AuthEffects {
     ofType(authActions.AuthActionTypes.logoutUser),
     mergeMap(() => this.authService.logout().pipe(
       map(({ ok }) => {
-        if (ok)
-          return authActions.LogoutUserComplete()
-        else
+        if (!ok)
           throw new Error()
-      }),
-      tap(() => {
-        sessionStorage.removeItem('access_token')
-        sessionStorage.removeItem('XSRF-TOKEN')
+        return authActions.LogoutUserComplete()
       }),
       tap(() => this.router.navigate(['/'])),
       catchError(async () => authActions.LogoutUserError())

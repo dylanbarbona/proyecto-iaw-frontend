@@ -30,7 +30,6 @@ import { HttpXSRFInterceptorProvider } from '../interceptors/HttpXsrf.intercepto
     LikeService,
     NotificationService,
     CollectionService,
-
     HttpXSRFInterceptorProvider
   ]
 })

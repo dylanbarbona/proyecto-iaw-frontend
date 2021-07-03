@@ -9,10 +9,16 @@ import { User } from '../models/user.model';
 
 import jwt_decode from 'jwt-decode';
 
+interface AuthResponse {
+  ok: boolean,
+  user?: User
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private readonly GET_CSRF_TOKEN_URL = '/auth'
   private readonly LOGIN_URL = '/auth/login'
   private readonly REGISTER_URL = '/auth/register'
   private readonly WHO_AM_I_URL = '/auth/profile'
@@ -21,43 +27,27 @@ export class AuthService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getCsrfToken(): Observable<{ 'XSRF-TOKEN': string }>{
-    return this.http.get<{ 'XSRF-TOKEN': string }>(environment.HOST + '/auth', { withCredentials: true })
+  getCsrfToken(): Observable<AuthResponse>{
+    return this.http.get<AuthResponse>(environment.HOST + this.GET_CSRF_TOKEN_URL, { withCredentials: true })
   }
 
-  register(register: Register): Observable<{ access_token: string }> {
-    return this.http.post<{ access_token: string }>(environment.HOST + this.REGISTER_URL, register, { withCredentials: true })
+  register(register: Register): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(environment.HOST + this.REGISTER_URL, register, { withCredentials: true })
   }
 
-  login(auth: Auth): Observable<{ access_token: string }>{
-    return this.http.post<{ access_token: string }>(environment.HOST + this.LOGIN_URL, auth, { withCredentials: true })
+  login(auth: Auth): Observable<AuthResponse>{
+    return this.http.post<AuthResponse>(environment.HOST + this.LOGIN_URL, auth, { withCredentials: true })
   }
 
   whoAmI(): Observable<User>{
     return this.http.get<User>(environment.HOST + this.WHO_AM_I_URL, { withCredentials: true })
   }
 
-  check(): Observable<{ error: boolean, access_token: string }>{
-    let access_token = this.getToken()
-    if(!access_token)
-      return this.http.get<{ error: boolean, access_token: string }>(environment.HOST + this.CHECK_URL, { withCredentials: true })
-    else
-      return of({ access_token, error: false })
+  check(): Observable<AuthResponse>{
+    return this.http.get<AuthResponse>(environment.HOST + this.CHECK_URL, { withCredentials: true })
   }
 
-  logout(): Observable<{ ok: boolean }>{
-    return this.http.get<{ ok: boolean }>(environment.HOST + this.LOGOUT_URL, { withCredentials: true })
-  }
-
-  decodeToken(access_token: string): User{
-    return jwt_decode(access_token) as User
-  }
-
-  saveToken(access_token: string){
-    sessionStorage.setItem('access_token', access_token)
-  }
-
-  getToken(){
-    return sessionStorage.getItem('access_token')
+  logout(): Observable<AuthResponse>{
+    return this.http.get<AuthResponse>(environment.HOST + this.LOGOUT_URL, { withCredentials: true })
   }
 }

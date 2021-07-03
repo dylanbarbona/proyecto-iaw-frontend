@@ -12,18 +12,8 @@ import * as authActions from '../../store/actions/auth.action'
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  content = [
-    {
-      image: 'https://picsum.photos/id/237/1366/768'
-    },{
-      image: 'https://picsum.photos/id/156/1366/768'
-    },{
-      image: 'https://picsum.photos/id/567/1366/768'
-    }
-  ]
-  
+
   constructor(private readonly store: Store){ }
 
   ngOnInit(): void { }
-
 }

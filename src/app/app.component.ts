@@ -16,9 +16,8 @@ export class AppComponent implements OnInit{
     private readonly authService: AuthService){ }
 
   ngOnInit(){
-    this.authService.getCsrfToken().pipe(
-      tap(token => sessionStorage.setItem('XSRF-TOKEN', token["XSRF-TOKEN"])),
-      //catchError(error => this.router.navigateByUrl('error'))
-    ).subscribe()
+    this.authService.getCsrfToken()
+      .pipe(catchError(error => this.router.navigateByUrl('error')))
+      .subscribe()
   }
 }

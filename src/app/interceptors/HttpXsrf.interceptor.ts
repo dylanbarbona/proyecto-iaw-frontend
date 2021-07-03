@@ -8,11 +8,17 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       const headerName = 'X-XSRF-TOKEN';
-      const lcUrl = req.url.toLowerCase();
-      const token = sessionStorage.getItem('XSRF-TOKEN')
+      const cookieName = 'XSRF-TOKEN'
+      const token = this.getCookie(cookieName)
       if (token !== null && !req.headers.has(headerName))
-          req = req.clone({ headers: req.headers.set(headerName, token) });
+          req = req.clone({ headers: req.headers.set(headerName, token || 'NONE') });
       return next.handle(req);
+  }
+
+  private getCookie(name: string): string | undefined {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    return parts.pop()?.split(';').shift();
   }
 }
 

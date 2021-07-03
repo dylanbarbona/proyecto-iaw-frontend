@@ -32,7 +32,7 @@ export class UserEffects {
   updateUser$ = createEffect(() => this.actions$.pipe(
     ofType(userActions.UserActionTypes.updateUser),
     mergeMap(({ input }) => this.userService.update(input).pipe(
-      map(user => authActions.UpdateProfile({ profile: user })),
+      map(user => authActions.UpdateProfile({ user })),
       map(() => userActions.UpdateUserComplete()),
       catchError(async () => userActions.UpdateUserError())
     )),
@@ -41,7 +41,7 @@ export class UserEffects {
   deleteUser$ = createEffect(() => this.actions$.pipe(
     ofType(userActions.UserActionTypes.deleteUser),
     mergeMap(() => this.userService.delete().pipe(
-      map(user => authActions.UpdateProfile({ profile: undefined })),
+      map(user => authActions.UpdateProfile({ user: undefined })),
       map(() => userActions.DeleteUserComplete()),
       catchError(async () => userActions.DeleteUserError())
     )),

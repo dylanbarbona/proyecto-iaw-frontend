@@ -29,7 +29,7 @@ export const authReducer = createReducer(
   on(authActions.InitialAction, (state) => ({ ...state, isLoading: false, auth: undefined, error: false, isLoggedIn: false, profile: undefined })),
 
   //UpdateProfile
-  on(authActions.UpdateProfile, (state, { profile }) => ({ ...state, profile })),
+  on(authActions.UpdateProfile, (state, { user }) => ({ ...state, profile: user })),
 
   //Check auth
   on(authActions.CheckAuth, (state) => ({ ...state, isLoading: true, error: false })),

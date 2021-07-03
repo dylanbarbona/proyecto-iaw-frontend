@@ -26,7 +26,7 @@ export enum AuthActionTypes {
 
 export const UpdateProfile = createAction(
   AuthActionTypes.updateProfile,
-  props<{ profile?: User }>()
+  props<{ user?: User }>()
 )
 
 export const CheckAuth = createAction(

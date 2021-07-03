@@ -25,7 +25,6 @@ export enum CategoryActionTypes {
   deleteCategoryError = '[Category] DELETE_CATEGORY_ERROR',
 }
 
-
 //GET
 export const GetCategory = createAction(
   CategoryActionTypes.getCategory,

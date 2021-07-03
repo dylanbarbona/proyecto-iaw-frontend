@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { NgrxModule } from '../store/ngrx.module';
+import { MdbModule } from 'mdb-angular-ui-kit';
 
 import { PagesComponent } from './pages.component';
 import { IndexComponent } from './index/index.component';
@@ -28,10 +29,11 @@ import { ComponentsModule } from '../components/components.module';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    MdbModule,
     NgrxModule,
     RouterModule,
     ComponentsModule,
-    SharedModule,
+    SharedModule
   ]
 })
 export class PagesModule { }
