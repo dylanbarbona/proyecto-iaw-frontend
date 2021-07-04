@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store'
-import { SearchCommentInput, UpdateCommentInput } from '../../interfaces/comment.interface'
+import { CreateCommentInput, SearchCommentInput, UpdateCommentInput } from '../../interfaces/comment.interface'
 import { Comment } from '../../models/comment.model'
 
 export enum CommentActionTypes {
@@ -25,50 +25,50 @@ export enum CommentActionTypes {
   deleteCommentError = '[Comment] DELETE_COMMENT_ERROR',
 }
 
-//Get
-export const GetComment = createAction(
-  CommentActionTypes.getComment,
-  props<{ search: SearchCommentInput }>()
-)
-
-export const GetCommentComplete = createAction(
-  CommentActionTypes.getCommentComplete,
-  props<{ comment: Comment }>()
-)
-
-export const GetCommentError = createAction(
-  CommentActionTypes.getCommentError
-)
-
 //Search
 export const SearchComments = createAction(
   CommentActionTypes.searchComments,
-  props<{ search: SearchCommentInput }>()
+  props<{ post: string, search: SearchCommentInput }>()
 )
 
 export const SearchMoreComments = createAction(
   CommentActionTypes.searchMoreComments,
-  props<{ search: SearchCommentInput }>()
+  props<{ post: string, search: SearchCommentInput }>()
 )
 
 export const SearchCommentsComplete = createAction(
   CommentActionTypes.searchCommentsComplete,
-  props<{ Comments: Comment[] }>()
+  props<{ post: string, comments: Comment[] }>()
 )
 
 export const SearchCommentsError = createAction(
   CommentActionTypes.searchCommentsError
 )
 
+//Create
+export const CreateComment = createAction(
+  CommentActionTypes.createComment,
+  props<{ post: string, input: CreateCommentInput }>()
+)
+
+export const CreateCommentComplete = createAction(
+  CommentActionTypes.createCommentComplete,
+  props<{ post: string, comment: Comment }>()
+)
+
+export const CreateCommentError = createAction(
+  CommentActionTypes.searchCommentsError
+)
+
 //Update
 export const UpdateComment = createAction(
   CommentActionTypes.updateComment,
-  props<{ search: SearchCommentInput, input: UpdateCommentInput }>()
+  props<{ post: string, search: SearchCommentInput, input: UpdateCommentInput }>()
 )
 
 export const UpdateCommentComplete = createAction(
   CommentActionTypes.updateCommentComplete,
-  props<{ Comment: Comment }>()
+  props<{ post: string, comment: Comment }>()
 )
 
 export const UpdateCommentError = createAction(
@@ -78,12 +78,12 @@ export const UpdateCommentError = createAction(
 //Delete
 export const DeleteComment = createAction(
   CommentActionTypes.deleteComment,
-  props<{ search: SearchCommentInput }>()
+  props<{ post: string, search: SearchCommentInput }>()
 )
 
 export const DeleteCommentComplete = createAction(
   CommentActionTypes.deleteCommentComplete,
-  props<{ Comment: Comment }>()
+  props<{ post: string, comment: Comment }>()
 )
 
 export const DeleteCommentError = createAction(

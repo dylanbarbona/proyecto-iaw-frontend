@@ -14,7 +14,7 @@ export class PostService {
   constructor(private readonly http: HttpClient) { }
 
   getByCategory(search: SearchPostInput): Observable<Post[]>{
-    return this.http.get<Post[]>(this.POST_URL + '/search/description',
+    return this.http.get<Post[]>(environment.HOST + this.POST_URL + '/search/description',
       {
         params: Object.entries(search).reduce((params, [key, value]) => params.set(key, value), new HttpParams()),
         withCredentials: true
@@ -23,7 +23,7 @@ export class PostService {
   }
 
   getByUser(search: SearchPostInput): Observable<Post[]>{
-    return this.http.get<Post[]>(this.POST_URL + '/search/user',
+    return this.http.get<Post[]>(environment.HOST + this.POST_URL + '/search/user',
       {
         params: Object.entries(search).reduce((params, [key, value]) => params.set(key, value), new HttpParams()),
         withCredentials: true
@@ -32,7 +32,7 @@ export class PostService {
   }
 
   getByDescription(search: SearchPostInput): Observable<Post[]>{
-    return this.http.get<Post[]>(this.POST_URL + '/search/description',
+    return this.http.get<Post[]>(environment.HOST + this.POST_URL + '/search/description',
       {
         params: Object.entries(search).reduce((params, [key, value]) => params.set(key, value), new HttpParams()),
         withCredentials: true
@@ -41,7 +41,7 @@ export class PostService {
   }
 
   getByFollowingUsers(search: SearchPostInput): Observable<Post[]>{
-    return this.http.get<Post[]>(this.POST_URL + '/search/followings',
+    return this.http.get<Post[]>(environment.HOST + this.POST_URL + '/search/followings',
       {
         params: Object.entries(search).reduce((params, [key, value]) => params.set(key, value), new HttpParams()),
         withCredentials: true
@@ -50,7 +50,7 @@ export class PostService {
   }
 
   getRandomPosts(search: SearchPostInput): Observable<Post[]>{
-    return this.http.get<Post[]>(this.POST_URL + '/search/random',
+    return this.http.get<Post[]>(environment.HOST + this.POST_URL + '/search/random',
       {
         params: Object.entries(search).reduce((params, [key, value]) => params.set(key, value), new HttpParams()),
         withCredentials: true
@@ -58,7 +58,7 @@ export class PostService {
     )
   }
 
-  get({ _id }: SearchPostInput): Observable<Post> {
+  get(_id : string): Observable<Post> {
     return this.http.get<Post>(environment.HOST + this.POST_URL + '/' + _id, { withCredentials: true })
   }
 

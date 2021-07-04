@@ -88,7 +88,7 @@ export const GetPostsError = createAction(
 
 export const GetPost = createAction(
   PostActionTypes.getPost,
-  props<{ search: SearchPostInput }>()
+  props<{ _id: string }>()
 )
 
 export const GetPostComplete = createAction(

@@ -28,8 +28,3 @@ export const selectIsLoadingFeature = createSelector(
   selectAuthFeature,
   (state: AuthState) => state.isLoading
 )
-
-export const selectResultFeature = createSelector(
-  selectAuthFeature,
-  (state: AuthState) => ({ error: state.error, success: state.isLoggedIn })
-)

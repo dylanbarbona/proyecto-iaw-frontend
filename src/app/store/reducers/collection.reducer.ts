@@ -2,7 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as collectionActions from '../actions/collection.action';
 import { Collection } from '../../models/collection.model';
 
-export const authFeatureKey = 'collection';
+export const collectionFeatureKey = 'collection';
 
 export interface CollectionState {
   collections: Collection[]

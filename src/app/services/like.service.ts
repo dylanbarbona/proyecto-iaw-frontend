@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 
 import { SearchLikeInput } from '../interfaces/like.interface';
 import { Like } from '../models/like.model';
+import { Post } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ export class LikeService {
 
   constructor(private readonly http: HttpClient) { }
 
-  like({ post, ...search }: SearchLikeInput){
-    return this.http.post<Like[]>(environment.HOST + this.BASE_URL + '/' + post + '/like', search, { withCredentials: true })
+  like(post: Post): Observable<Like[]>{
+    return this.http.post<Like[]>(environment.HOST + this.BASE_URL + '/' + post + '/like', { },{ withCredentials: true })
   }
 
-  getLikes({ post, ...search }: SearchLikeInput): Observable<Like[]>{
+  getLikes(post: Post, search: SearchLikeInput): Observable<Like[]>{
     return this.http.get<Like[]>(
       environment.HOST + this.BASE_URL + '/' + post + '/likes',
       {

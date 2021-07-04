@@ -7,7 +7,6 @@ export interface CreateCommentInput {
 export interface SearchCommentInput {
   _id?: string
   user?: string
-  post: string
   createdAt_max?: Date
   createdAt_min?: Date
   updatedAt_max?: Date

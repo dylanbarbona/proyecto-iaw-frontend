@@ -1,7 +1,8 @@
 import { Category } from './category.model';
 import { Metadata } from './metadata.model';
 import { Like } from './like.model';
-import { User } from './user.model';
+import { Comment } from './comment.model';
+import { EmptyUser, User } from './user.model';
 
 export interface Post {
   _id: string
@@ -11,4 +12,15 @@ export interface Post {
   metadata: Metadata[]
   comments: Comment[]
   likes: Like[]
+}
+
+export class EmptyPost implements Post {
+  _id: string = '';
+  user: string | User = new EmptyUser();
+  categories: string[] | Category[] = [];
+  description: string = '';
+  metadata: Metadata[] = [];
+  comments: Comment[] = [];
+  likes: Like[] = [];
+
 }

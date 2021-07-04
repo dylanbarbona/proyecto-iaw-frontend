@@ -26,7 +26,7 @@ export enum UserActionTypes {
 //Get
 export const GetUser = createAction(
   UserActionTypes.getUser,
-  props<{ search: SearchUserInput }>()
+  props<{ username: string }>()
 )
 
 export const GetUserComplete = createAction(

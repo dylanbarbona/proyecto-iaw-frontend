@@ -11,7 +11,7 @@ import jwt_decode from 'jwt-decode';
 
 interface AuthResponse {
   ok: boolean,
-  user?: User
+  user: User
 }
 
 @Injectable({

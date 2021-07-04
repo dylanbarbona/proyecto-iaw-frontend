@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { catchError, mergeMap, map } from 'rxjs/operators';
+import { catchError, mergeMap, map, tap } from 'rxjs/operators';
 
 import * as postActions from '../actions/post.action';
 import { PostService } from '../../services/post.service';
 
 @Injectable()
-export class UserEffects {
+export class PostEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly postService: PostService) { }
@@ -46,7 +46,7 @@ export class UserEffects {
 
   getPost$ = createEffect(() => this.actions$.pipe(
     ofType(postActions.PostActionTypes.getPost),
-    mergeMap(({ search }) => this.postService.get(search).pipe(
+    mergeMap(({ _id }) => this.postService.get(_id).pipe(
       map(post => postActions.GetPostComplete({ post })),
       catchError(async () => postActions.GetPostError())
     )),

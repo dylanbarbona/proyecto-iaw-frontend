@@ -6,20 +6,20 @@ export const selectUserState = createFeatureSelector<AppState, UserState>(userFe
 
 export const selectUserFeature = createSelector(
   selectUserState,
-  (state: UserState) => state
+  (state: UserState) => state.user
 );
 
 export const selectUsersFeature = createSelector(
-  selectUserFeature,
+  selectUserState,
   (state: UserState) => state.users
 )
 
 export const selectErrorFeature = createSelector(
-  selectUserFeature,
+  selectUserState,
   (state: UserState) => state.error
 )
 
 export const selectIsLoadingFeature = createSelector(
-  selectUserFeature,
+  selectUserState,
   (state: UserState) => state.isLoading
 )

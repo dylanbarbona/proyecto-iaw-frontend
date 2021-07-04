@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store'
 import { Like } from '../../models/like.model'
 import { SearchLikeInput } from '../../interfaces/like.interface'
+import { Post } from '../../models/post.model'
 
 export enum LikeActionTypes {
   getLikes  = '[Like] GET_LIKES',
@@ -16,17 +17,17 @@ export enum LikeActionTypes {
 //GET
 export const GetLikes = createAction(
   LikeActionTypes.getLikes,
-  props<{ search: SearchLikeInput }>()
+  props<{ post: string, search?: SearchLikeInput }>()
 )
 
 export const GetMoreLikes = createAction(
   LikeActionTypes.getMoreLikes,
-  props<{ search: SearchLikeInput }>()
+  props<{ post: string, search?: SearchLikeInput }>()
 )
 
 export const GetLikesComplete = createAction(
   LikeActionTypes.getLikesComplete,
-  props<{ likes: Like[] }>()
+  props<{ post: string, likes: Like[] }>()
 )
 
 export const GetLikesError = createAction(
@@ -36,12 +37,12 @@ export const GetLikesError = createAction(
 //LIKE
 export const LikePost = createAction(
   LikeActionTypes.likePost,
-  props<{ search: SearchLikeInput }>()
+  props<{ post: string }>()
 )
 
 export const LikePostComplete = createAction(
   LikeActionTypes.likePostComplete,
-  props<{ likes: Like[] }>()
+  props<{ post: string, likes: Like[] }>()
 )
 
 export const LikePostError = createAction(

@@ -36,11 +36,11 @@ export class AuthEffects {
   checkAuth$ = createEffect(() => this.actions$.pipe(
     ofType(authActions.AuthActionTypes.checkAuth),
     mergeMap(() => {
-      return this.authService.check().pipe(
-        map(({ ok }) => {
-          if(!ok)
+      return this.authService.whoAmI().pipe(
+        map((user) => {
+          if(!user)
             return authActions.CheckAuthError()
-          return authActions.CheckAuthComplete()
+          return authActions.CheckAuthComplete({ user })
         }),
           catchError(async () => authActions.CheckAuthError())
         )

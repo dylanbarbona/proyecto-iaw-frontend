@@ -18,7 +18,7 @@ export enum AuthActionTypes {
   logoutUser = '[Auth] LOGOUT_USER',
   logoutUserComplete = '[Auth] LOGOUT_USER_COMPLETE',
   logoutUserError = '[Auth] LOGOUT_USER_ERROR',
-  
+
   registerUser = '[Auth] REGISTER_USER',
   registerUserError = '[Auth] REGISTER_USER_ERROR',
   registerUserComplete ='[Auth] REGISTER_USER_COMPLETE',
@@ -26,7 +26,7 @@ export enum AuthActionTypes {
 
 export const UpdateProfile = createAction(
   AuthActionTypes.updateProfile,
-  props<{ user?: User }>()
+  props<{ user: User }>()
 )
 
 export const CheckAuth = createAction(
@@ -38,7 +38,8 @@ export const InitialAction = createAction(
 )
 
 export const CheckAuthComplete = createAction(
-  AuthActionTypes.checkAuthComplete
+  AuthActionTypes.checkAuthComplete,
+  props<{ user: User }>()
 )
 
 export const CheckAuthError = createAction(
@@ -47,12 +48,12 @@ export const CheckAuthError = createAction(
 
 export const LoginUser = createAction(
   AuthActionTypes.loginUser,
-  props<{ auth?: Auth }>()
+  props<{ auth: Auth }>()
 )
 
 export const LoginUserComplete = createAction(
   AuthActionTypes.loginUserComplete,
-  props<{ profile?: User }>()
+  props<{ profile: User }>()
 )
 
 export const LoginUserError = createAction(
@@ -61,12 +62,12 @@ export const LoginUserError = createAction(
 
 export const RegisterUser = createAction(
   AuthActionTypes.registerUser,
-  props<{ auth?: Register }>()
+  props<{ auth: Register }>()
 )
 
 export const RegisterUserComplete = createAction(
   AuthActionTypes.registerUserComplete,
-  props<{ profile?: User }>()
+  props<{ profile: User }>()
 )
 
 export const RegisterUserError = createAction(

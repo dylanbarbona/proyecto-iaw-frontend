@@ -1,8 +1,8 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as categoryActions from '../actions/category.action';
 import { Category } from '../../models/category.model';
 
-export const authFeatureKey = 'category';
+export const categoryFeatureKey = 'category';
 
 export interface CategoryState {
   categories: Category[]

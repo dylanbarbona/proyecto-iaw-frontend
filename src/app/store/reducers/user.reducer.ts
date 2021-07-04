@@ -1,16 +1,18 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as userActions from '../actions/user.action';
-import { User } from '../../models/user.model';
+import { EmptyUser, User } from '../../models/user.model';
 
 export const userFeatureKey = 'user';
 
 export interface UserState {
+  user: User,
   users: User[]
   isLoading: boolean
   error: boolean,
 }
 
 export const initialState: UserState = {
+  user: new EmptyUser(),
   users: [],
   isLoading: false,
   error: false
@@ -20,9 +22,9 @@ export const userReducer = createReducer(
   initialState,
 
   //GetUser
-  on(userActions.GetUser, (state) => ({ ...state, isLoading: true, error: false, users: [] })),
-  on(userActions.GetUserComplete, (state, { user }) => ({ ...state, isLoading: false, users: [user] })),
-  on(userActions.GetUserError, (state) => ({ ...state, isLoading: false, error: true })),
+  on(userActions.GetUser, (state) => ({ ...state, isLoading: true, error: false })),
+  on(userActions.GetUserComplete, (state, { user }) => ({ ...state, isLoading: false, user })),
+  on(userActions.GetUserError, (state) => ({ ...state, isLoading: false, error: true, user: new EmptyUser() })),
 
   //SearchUser
   on(userActions.SearchUsers, (state) => ({ ...state, isLoading: true, error: false, users: [] })),

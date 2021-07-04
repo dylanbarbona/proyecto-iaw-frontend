@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { catchError, mergeMap, map } from 'rxjs/operators';
+import { catchError, mergeMap, map, tap } from 'rxjs/operators';
 
 import * as userActions from '../actions/user.action';
 import * as authActions from '../actions/auth.action';
 import { UserService } from 'src/app/services/user.service';
+import { EmptyUser } from 'src/app/models/user.model';
+
+import { AppState } from '../reducers';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class UserEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly userService: UserService) { }
+    private readonly userService: UserService,
+    private readonly store: Store<AppState>) { }
 
   getUser$ = createEffect(() => this.actions$.pipe(
     ofType(userActions.UserActionTypes.getUser),
-    mergeMap(({ search }) => this.userService.get(search).pipe(
-      map(user => userActions.GetUserComplete({ user })),
+    mergeMap(({ username }) => this.userService.get(username).pipe(
+      map(user => {
+        if(user == null)
+          throw new Error()
+        return userActions.GetUserComplete({ user })
+      }),
       catchError(async () => userActions.GetUserError())
     )),
   ))
@@ -32,7 +41,7 @@ export class UserEffects {
   updateUser$ = createEffect(() => this.actions$.pipe(
     ofType(userActions.UserActionTypes.updateUser),
     mergeMap(({ input }) => this.userService.update(input).pipe(
-      map(user => authActions.UpdateProfile({ user })),
+      tap(user => this.store.dispatch(authActions.UpdateProfile({ user }))),
       map(() => userActions.UpdateUserComplete()),
       catchError(async () => userActions.UpdateUserError())
     )),
@@ -41,7 +50,7 @@ export class UserEffects {
   deleteUser$ = createEffect(() => this.actions$.pipe(
     ofType(userActions.UserActionTypes.deleteUser),
     mergeMap(() => this.userService.delete().pipe(
-      map(user => authActions.UpdateProfile({ user: undefined })),
+      tap(user => this.store.dispatch(authActions.UpdateProfile({ user: new EmptyUser() }))),
       map(() => userActions.DeleteUserComplete()),
       catchError(async () => userActions.DeleteUserError())
     )),
