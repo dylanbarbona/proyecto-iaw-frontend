@@ -6,7 +6,7 @@ import * as commentActions from '../actions/comment.action'
 import { Comment } from "../../models/comment.model";
 
 @Injectable()
-export class CommentEffect {
+export class CommentEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly commentService: CommentService

@@ -12,6 +12,7 @@ export enum CategoryActionTypes {
   searchCategoriesComplete = '[Category] SEARCH_CATEGORIES_COMPLETE',
   searchCategoriesError = '[Category] SEARCH_CATEGORIES_ERROR',
 
+  /*
   createCategory = '[Category] CREATE_CATEGORY',
   createCategoryComplete = '[Category] CREATE_CATEGORY_COMPLETE',
   createCategoryError = '[Category] CREATE_CATEGORY_ERROR',
@@ -23,6 +24,7 @@ export enum CategoryActionTypes {
   deleteCategory = '[Category] DELETE_CATEGORY',
   deleteCategoryComplete = '[Category] DELETE_CATEGORY_COMPLETE',
   deleteCategoryError = '[Category] DELETE_CATEGORY_ERROR',
+  */
 }
 
 //GET
@@ -61,6 +63,7 @@ export const SearchCategoriesError = createAction(
 )
 
 //CREATE
+/*
 export const CreateCategory = createAction(
   CategoryActionTypes.createCategory,
   props<{ input: CreateCategoryInput }>()
@@ -104,3 +107,4 @@ export const DeleteCategoryComplete = createAction(
 export const DeleteCategoryError = createAction(
   CategoryActionTypes.deleteCategoryError
 )
+*/

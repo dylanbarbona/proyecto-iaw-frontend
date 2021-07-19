@@ -16,9 +16,13 @@ export enum CollectionActionTypes {
   createCollectionComplete = '[Collection] CREATE_COLLECTION_COMPLETE',
   createCollectionError = '[Collection] CREATE_COLLECTION_ERROR',
 
-  updateCollection = '[Collection] UPDATE_COLLECTION',
-  updateCollectionComplete = '[Collection] UPDATE_COLLECTION_COMPLETE',
-  updateCollectionError = '[Collection] UPDATE_COLLECTION_ERROR',
+  addPostToCollection = '[Collection] ADD_POST_TO_COLLECTION',
+  addPostToCollectionComplete = '[Collection] ADD_POST_TO_COLLECTION_COMPLETE',
+  addPostToCollectionError = '[Collection] ADD_POST_TO_COLLECTION_ERROR',
+
+  removePostFromCollection = '[Collection] REMOVE_POST_FROM_COLLECTION',
+  removePostFromCollectionComplete = '[Collection] REMOVE_POST_FROM_COLLECTION_COMPLETE',
+  removePostFromCollectionError = '[Collection] REMOVE_POST_FROM_COLLECTION_ERROR',
 
   deleteCollection = '[Collection] DELETE_COLLECTION',
   deleteCollectionComplete = '[Collection] DELETE_COLLECTION_COMPLETE',
@@ -44,12 +48,12 @@ export const GetCollectionError = createAction(
 //SEARCH
 export const SearchCollections = createAction(
   CollectionActionTypes.searchCollections,
-  props<{ search: SearchCollectionInput }>()
+  props<{ search?: SearchCollectionInput }>()
 )
 
 export const SearchMoreCollections = createAction(
   CollectionActionTypes.searchMoreCollections,
-  props<{ search: SearchCollectionInput }>()
+  props<{ search?: SearchCollectionInput }>()
 )
 
 export const SearchCollectionsComplete = createAction(
@@ -77,18 +81,32 @@ export const CreateCollectionError = createAction(
 )
 
 //UPDATE
-export const UpdateCollection = createAction(
-  CollectionActionTypes.updateCollection,
+export const AddPostToCollection = createAction(
+  CollectionActionTypes.addPostToCollection,
   props<{ search: SearchCollectionInput, input: UpdateCollectionInput }>()
 )
 
-export const UpdateCollectionComplete = createAction(
-  CollectionActionTypes.updateCollectionComplete,
+export const AddPostToCollectionComplete = createAction(
+  CollectionActionTypes.addPostToCollectionComplete,
   props<{ collection: Collection }>()
 )
 
-export const UpdateCollectionError = createAction(
-  CollectionActionTypes.updateCollectionError
+export const AddPostToCollectionError = createAction(
+  CollectionActionTypes.addPostToCollectionError
+)
+
+export const RemovePostFromCollection = createAction(
+  CollectionActionTypes.removePostFromCollection,
+  props<{ search: SearchCollectionInput, input: UpdateCollectionInput }>()
+)
+
+export const RemovePostFromCollectionComplete = createAction(
+  CollectionActionTypes.removePostFromCollectionComplete,
+  props<{ collection: Collection }>()
+)
+
+export const RemovePostFromCollectionError = createAction(
+  CollectionActionTypes.removePostFromCollectionError
 )
 
 //DELETE
