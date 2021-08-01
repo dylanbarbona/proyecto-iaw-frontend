@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanLoad, Route, UrlSegment } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Store, select } from '@ngrx/store';
@@ -11,7 +11,7 @@ import { AppState } from '../store/reducers';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanLoad {
+export class GuessGuard implements CanActivate, CanLoad {
   profile$ = this.store.pipe(select(authSelectors.selectProfileFeature))
 
   constructor(
@@ -21,6 +21,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     this.store.dispatch(authActions.CheckAuth())
     return this.profile$.pipe(
+      tap(console.log),
       map(profile => {
         console.log(profile)
         return true
@@ -36,6 +37,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
     this.store.dispatch(authActions.CheckAuth())
     return this.profile$.pipe(
+      tap(console.log),
       map(profile => {
         console.log(profile)
         return true

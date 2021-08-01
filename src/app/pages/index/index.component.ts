@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 
 import * as authSelectors from '../../store/selectors/auth.selectors'
 import * as authActions from '../../store/actions/auth.action'
+import { AppState } from 'src/app/store/reducers';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,7 @@ import * as authActions from '../../store/actions/auth.action'
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private readonly store: Store){ }
+  constructor(private readonly store: Store<AppState>){ }
 
   ngOnInit(): void { }
 }

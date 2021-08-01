@@ -1,0 +1,25 @@
+.login-card {
+  height: 100%;
+
+  .btn-login {
+    background-color: rgb(5, 160, 129);
+    border: none;
+    color: white;
+
+    &:hover {
+      background-color: rgb(5, 185, 149);
+    }
+  }
+
+  p {
+    a {
+      color:rgb(5, 185, 149);
+      cursor: pointer;
+      transition: .3s;
+      &:hover {
+        color:rgb(3, 117, 94);
+      }
+    }
+  }
+
+}

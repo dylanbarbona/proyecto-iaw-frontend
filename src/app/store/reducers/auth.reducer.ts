@@ -32,9 +32,9 @@ export const authReducer = createReducer(
   on(authActions.UpdateProfile, (state, { user }) => ({ ...state, profile: user })),
 
   //Check auth
-  on(authActions.CheckAuth, (state) => ({ ...state, isLoading: true, error: false })),
-  on(authActions.CheckAuthComplete, (state, { user }) => ({ ...state, profile: user, isLoggedIn: true, isLoading: false })),
-  on(authActions.CheckAuthError, (state) => ({ ...state, isLoggedIn: false, error: true, isLoading: false })),
+  on(authActions.CheckAuth, (state) => ({ ...state })),
+  on(authActions.CheckAuthComplete, (state, { user }) => ({ ...state, profile: user })),
+  on(authActions.CheckAuthError, (state) => ({ ...state, isLoggedIn: false })),
 
   //Login
   on(authActions.LoginUser, (state, { auth }) => ({ ...state, auth, profile: new EmptyUser(), isLoading: true, error: false })),

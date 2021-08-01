@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" [ngClass]="background">
+  <div class="container-fluid">
+    <div class="row justify-content-start align-items-center w-100 w-lg-25">
+      <div class="col-2 col-md-1 d-flex justify-content-start justify-content-lg-end">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 32 32">
+          <path d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" fill="#05A081">
+          </path>
+          <path
+            d="M13 21h3.863v-3.752h1.167a3.124 3.124 0 1 0 0-6.248H13v10zm5.863 2H11V9h7.03a5.124 5.124 0 0 1 .833 10.18V23z"
+            fill="#fff">
+          </path>
+        </svg>
+      </div>
+      <div class="col-lg-1 d-none d-lg-flex justify-content-start">
+        <a class="navbar-brand d-none d-lg-inline-block" href="#">Protogram</a>
+      </div>
+      <div class="col-8 col-md-10 col-lg-7">
+        <app-search></app-search>
+      </div>
+      <div class="col-2 col-md-1 d-flex d-lg-none justify-content-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-header"
+          aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse col-3 justify-self-end" id="navbar-header">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0 d-flex justify-content-start justify-content-lg-end align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active mx-1" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-1" href="#">Explorar</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" routerLink="/login" *ngIf="!(isLoggedIn$ | async)">
+              Ingresar
+            </a>
+            <a class="nav-link dropdown-toggle" *ngIf="isLoggedIn$ | async" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="d-none d-lg-inline img-fluid rounded" src="/assets/img/user/user.png"/>
+              <span class="d-inline d-lg-none">
+                Dylan Barbona
+              </span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Tu perfil</a></li>
+              <li><a class="dropdown-item" href="#">Configuraciones</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

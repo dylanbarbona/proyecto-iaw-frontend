@@ -31,7 +31,6 @@ import { ComponentsModule } from '../components/components.module';
     ReactiveFormsModule,
     MdbModule,
     NgrxModule,
-    RouterModule,
     ComponentsModule,
     SharedModule
   ]
