@@ -5,6 +5,7 @@ import { MdbModule } from 'mdb-angular-ui-kit';
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
 import { NgrxModule } from '../store/ngrx.module';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,6 +23,7 @@ import { PostsComponent } from './posts/posts.component';
     RouterModule,
     NgrxModule,
     MdbModule,
+    NgxMasonryModule,
   ],
   exports:[
     HeaderComponent,

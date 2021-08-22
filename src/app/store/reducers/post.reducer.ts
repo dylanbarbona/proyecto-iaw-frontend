@@ -16,7 +16,7 @@ export interface PostState {
 }
 
 export const initialState: PostState = {
-  post: new EmptyPost(),
+  post: EmptyPost.getInstance(),
   posts: [],
   isLoading: false,
   error: false
@@ -42,22 +42,22 @@ export const postReducer = createReducer(
   //Get
   on(postActions.GetPost, (state) => ({ ...state, isLoading: true, error: false })),
   on(postActions.GetPostComplete, (state, { post }) => ({ ...state, isLoading: false, post })),
-  on(postActions.GetPostError, (state) => ({ ...state, isLoading: false, error: true, post: new EmptyPost() })),
+  on(postActions.GetPostError, (state) => ({ ...state, isLoading: false, error: true, post: EmptyPost.getInstance() })),
 
   //Create
   on(postActions.CreatePost, (state) => ({ ...state, isLoading: true, error: false })),
   on(postActions.CreatePostComplete, (state, { post }) => ({ ...state, isLoading: true, post })),
-  on(postActions.CreatePost, (state) => ({ ...state, isLoading: false, error: true, post: new EmptyPost() })),
+  on(postActions.CreatePost, (state) => ({ ...state, isLoading: false, error: true, post: EmptyPost.getInstance() })),
 
   //Update
   on(postActions.UpdatePost, (state) => ({ ...state, isLoading: true, error: false })),
   on(postActions.UpdatePostComplete, (state, { post }) => ({ ...state, isLoading: true, post })),
-  on(postActions.UpdatePost, (state) => ({ ...state, isLoading: false, error: true, post: new EmptyPost() })),
+  on(postActions.UpdatePost, (state) => ({ ...state, isLoading: false, error: true, post: EmptyPost.getInstance() })),
 
   //Delete
   on(postActions.DeletePost, (state) => ({ ...state, isLoading: true, error: false })),
   on(postActions.DeletePostComplete, (state, { post }) => ({ ...state, isLoading: true, post })),
-  on(postActions.DeletePost, (state) => ({ ...state, isLoading: false, error: true, post: new EmptyPost() })),
+  on(postActions.DeletePost, (state) => ({ ...state, isLoading: false, error: true, post: EmptyPost.getInstance() })),
 
   //Like
   //Get likes

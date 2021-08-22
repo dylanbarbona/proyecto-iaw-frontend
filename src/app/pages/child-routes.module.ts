@@ -9,14 +9,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 const childRoutes: Routes = [
-  { path: '', component: IndexComponent, canActivate: [GuessGuard], canLoad: [GuessGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [GuessGuard], canLoad: [GuessGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [GuessGuard], canLoad: [GuessGuard] },
+  { path: '', component: IndexComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'search', component: SearchComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], canLoad: [AuthGuard], },
   { path: 'user', component: ProfileComponent, canActivate: [AuthGuard], canLoad: [AuthGuard], },
+  { path: 'create', component: CreatePostComponent, canActivate: [AuthGuard], canLoad: [AuthGuard] }
 ]
 
 @NgModule({

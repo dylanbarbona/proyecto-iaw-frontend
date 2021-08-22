@@ -15,6 +15,7 @@ import { PhotoPanelComponent } from './photo-panel/photo-panel.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
 import { SearchCarouselComponent } from './search-carousel/search-carousel.component';
 import { HomeTabsComponent } from './home-tabs/home-tabs.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HomeTabsComponent } from './home-tabs/home-tabs.component';
     RegisterCardComponent,
     SearchCarouselComponent,
     HomeTabsComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { HomeTabsComponent } from './home-tabs/home-tabs.component';
     PhotoPanelComponent,
     RegisterCardComponent,
     SearchCarouselComponent,
-    HomeTabsComponent
+    HomeTabsComponent,
+    PostComponent
   ]
 })
 export class ComponentsModule { }

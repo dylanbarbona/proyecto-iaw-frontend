@@ -15,6 +15,16 @@ export interface Post {
 }
 
 export class EmptyPost implements Post {
+  private static instance: Post;
+
+  private constructor(){}
+
+  public static getInstance(){
+    if(!this.instance)
+      this.instance = new EmptyPost()
+    return this.instance
+  }
+
   _id: string = '';
   user: string | User = EmptyUser.getInstance();
   categories: string[] | Category[] = [];
@@ -22,5 +32,4 @@ export class EmptyPost implements Post {
   metadata: Metadata[] = [];
   comments: Comment[] = [];
   likes: Like[] = [];
-
 }
