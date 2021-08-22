@@ -1,3 +1,28 @@
 <app-template>
-  
+  <div class="container-fluid py-5" style="min-height: 100vh;">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <p class="text-center">
+          Subir fotos y vídeos
+            Las fotos que subas se van a distribuir gratis bajo la licencia de Pexels. Más información
+            Para aumentar tus posibilidades de tener contenido destacado, asegúrate de que el contenido que subes sigue nuestras directrices.
+            Revisaremos el contenido que has presentado. Si lo seleccionamos, recibirás una notificación por correo electrónico y el contenido aparecerá en las búsquedas.
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <form>
+          <div class="form-group my-2">
+            <label for="formFileMultiple" class="form-label">Puede subir múltiples imágenes o vídeos</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple />
+          </div>
+          <div class="form-group my-2">
+            <label for="formSelectCategories" class="form-label">Seleccione las categorías</label>
+            <select class="form-select js-data-example-ajax" multiple="multiple"></select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </app-template>
