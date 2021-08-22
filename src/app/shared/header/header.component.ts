@@ -20,6 +20,6 @@ export class HeaderComponent implements OnInit {
   constructor(private readonly store: Store<AppState>){ }
 
   ngOnInit(): void {
-    this.store.dispatch(authActions.CheckAuth())
+
   }
 }

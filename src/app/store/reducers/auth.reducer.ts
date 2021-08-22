@@ -3,6 +3,8 @@ import * as authActions from '../actions/auth.action';
 import { EmptyUser, User } from '../../models/user.model';
 import { Auth, EmptyAuth } from '../../interfaces/auth.interface';
 import { Register } from '../../interfaces/register.interface';
+import { Injectable } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 export const authFeatureKey = 'auth';
 
@@ -15,39 +17,36 @@ export interface AuthState {
 }
 
 export const initialState: AuthState = {
-  auth: new EmptyAuth(),
-  profile: new EmptyUser(),
+  auth: EmptyAuth.getInstance(),
+  profile: EmptyUser.getInstance(),
   isLoggedIn: false,
   error: false,
-  isLoading: false
-};
+  isLoading: false,
+}
 
 export const authReducer = createReducer(
   initialState,
-
-  //Initial action
-  on(authActions.InitialAction, (state) => ({ ...state, isLoading: false, auth: new EmptyAuth(), error: false, isLoggedIn: false, profile: new EmptyUser() })),
 
   //UpdateProfile
   on(authActions.UpdateProfile, (state, { user }) => ({ ...state, profile: user })),
 
   //Check auth
   on(authActions.CheckAuth, (state) => ({ ...state })),
-  on(authActions.CheckAuthComplete, (state, { user }) => ({ ...state, profile: user })),
+  on(authActions.CheckAuthComplete, (state, { user }) => ({ ...state, profile: user, isLoggedIn: true })),
   on(authActions.CheckAuthError, (state) => ({ ...state, isLoggedIn: false })),
 
   //Login
-  on(authActions.LoginUser, (state, { auth }) => ({ ...state, auth, profile: new EmptyUser(), isLoading: true, error: false })),
-  on(authActions.LoginUserComplete, (state, { profile }) => ({ ...state, profile, auth: new EmptyAuth(), isLoggedIn: true, isLoading: false })),
-  on(authActions.LoginUserError, (state) => ({ ...state, auth: new EmptyAuth(), error: true, isLoading: false })),
+  on(authActions.LoginUser, (state, { auth }) => ({ ...state, auth, isLoading: true, error: false })),
+  on(authActions.LoginUserComplete, (state, { profile }) => ({ ...state, profile, auth: EmptyAuth.getInstance(), isLoggedIn: true, isLoading: false })),
+  on(authActions.LoginUserError, (state) => ({ ...state, auth: EmptyAuth.getInstance(), error: true, isLoading: false })),
 
   //Register
-  on(authActions.RegisterUser, (state, { auth }) => ({ ...state, auth, profile: new EmptyUser(), isLoading: true, error: false })),
-  on(authActions.RegisterUserComplete, (state, { profile }) => ({ ...state, profile, auth: new EmptyAuth(), isLoggedIn: true, isLoading: false })),
-  on(authActions.RegisterUserError, (state) => ({ ...state, error: true, auth: new EmptyAuth(), isLoading: false})),
+  on(authActions.RegisterUser, (state, { auth }) => ({ ...state, auth, isLoading: true, error: false })),
+  on(authActions.RegisterUserComplete, (state, { profile }) => ({ ...state, profile, auth: EmptyAuth.getInstance(), isLoggedIn: true, isLoading: false })),
+  on(authActions.RegisterUserError, (state) => ({ ...state, error: true, auth: EmptyAuth.getInstance(), isLoading: false})),
 
   //Logout
   on(authActions.LogoutUser, (state) => ({ ...state, isLoading: true, error: false })),
-  on(authActions.LogoutUserComplete, (state) => ({ ...state, isLoading: false, profile: new EmptyUser(), isLoggedIn: false})),
+  on(authActions.LogoutUserComplete, (state) => ({ ...state, isLoading: false, profile: EmptyUser.getInstance(), isLoggedIn: false})),
   on(authActions.LogoutUserError, (state) => ({ ...state, isLoading: false, error: true }))
 );

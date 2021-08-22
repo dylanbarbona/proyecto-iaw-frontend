@@ -12,7 +12,7 @@ export interface UserState {
 }
 
 export const initialState: UserState = {
-  user: new EmptyUser(),
+  user: EmptyUser.getInstance(),
   users: [],
   isLoading: false,
   error: false
@@ -24,7 +24,7 @@ export const userReducer = createReducer(
   //GetUser
   on(userActions.GetUser, (state) => ({ ...state, isLoading: true, error: false })),
   on(userActions.GetUserComplete, (state, { user }) => ({ ...state, isLoading: false, user })),
-  on(userActions.GetUserError, (state) => ({ ...state, isLoading: false, error: true, user: new EmptyUser() })),
+  on(userActions.GetUserError, (state) => ({ ...state, isLoading: false, error: true, user: EmptyUser.getInstance() })),
 
   //SearchUser
   on(userActions.SearchUsers, (state) => ({ ...state, isLoading: true, error: false, users: [] })),

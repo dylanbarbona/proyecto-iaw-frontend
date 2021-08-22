@@ -7,20 +7,26 @@ import { RouterModule } from '@angular/router';
 import { NgrxModule } from '../store/ngrx.module';
 
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    FooterComponent,
+    PostsComponent,
   ],
   imports: [
     CommonModule,
     ComponentsModule,
     RouterModule,
     NgrxModule,
-    MdbModule,    
+    MdbModule,
   ],
   exports:[
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    PostsComponent
   ]
 })
 export class SharedModule { }

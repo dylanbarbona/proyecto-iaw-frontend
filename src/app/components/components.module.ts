@@ -13,6 +13,8 @@ import { IndexCarouselComponent } from './index-carousel/index-carousel.componen
 import { LoginCardComponent } from './login-card/login-card.component';
 import { PhotoPanelComponent } from './photo-panel/photo-panel.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
+import { SearchCarouselComponent } from './search-carousel/search-carousel.component';
+import { HomeTabsComponent } from './home-tabs/home-tabs.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { RegisterCardComponent } from './register-card/register-card.component';
     LoginCardComponent,
     PhotoPanelComponent,
     RegisterCardComponent,
+    SearchCarouselComponent,
+    HomeTabsComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,8 @@ import { RegisterCardComponent } from './register-card/register-card.component';
     LoginCardComponent,
     PhotoPanelComponent,
     RegisterCardComponent,
+    SearchCarouselComponent,
+    HomeTabsComponent
   ]
 })
 export class ComponentsModule { }

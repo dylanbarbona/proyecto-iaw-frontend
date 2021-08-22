@@ -9,6 +9,6 @@ export class LoginComponent implements OnInit {
   constructor(){ }
 
   ngOnInit(): void {
-    //this.login({ username: 'dylanbarbona', password: '27069706636/f' })
+    
   }
 }

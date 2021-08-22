@@ -20,6 +20,16 @@ export interface User {
 }
 
 export class EmptyUser implements User {
+  private static instance: User;
+
+  private constructor(){}
+
+  public static getInstance(){
+    if(!this.instance)
+      this.instance = new EmptyUser()
+    return this.instance
+  }
+
   username: string = '';
   name: string = '';
   email: string = '';
@@ -32,5 +42,4 @@ export class EmptyUser implements User {
   followings?: User[] | string[];
   google_login?: boolean;
   facebook_login?: boolean;
-
 }

@@ -50,7 +50,7 @@ export class UserEffects {
   deleteUser$ = createEffect(() => this.actions$.pipe(
     ofType(userActions.UserActionTypes.deleteUser),
     mergeMap(() => this.userService.delete().pipe(
-      tap(user => this.store.dispatch(authActions.UpdateProfile({ user: new EmptyUser() }))),
+      tap(user => this.store.dispatch(authActions.UpdateProfile({ user: EmptyUser.getInstance() }))),
       map(() => userActions.DeleteUserComplete()),
       catchError(async () => userActions.DeleteUserError())
     )),

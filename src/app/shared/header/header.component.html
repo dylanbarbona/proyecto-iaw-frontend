@@ -12,10 +12,10 @@
         </svg>
       </div>
       <div class="col-lg-1 d-none d-lg-flex justify-content-start">
-        <a class="navbar-brand d-none d-lg-inline-block" href="#">Protogram</a>
+        <a class="navbar-brand d-none d-lg-inline-block" routerLink="#">Protogram</a>
       </div>
       <div class="col-8 col-md-10 col-lg-7">
-        <app-search></app-search>
+        <!-- <app-search></app-search> -->
       </div>
       <div class="col-2 col-md-1 d-flex d-lg-none justify-content-end">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-header"
@@ -26,28 +26,29 @@
       <div class="collapse navbar-collapse col-3 justify-self-end" id="navbar-header">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0 d-flex justify-content-start justify-content-lg-end align-items-lg-center">
           <li class="nav-item">
-            <a class="nav-link active mx-1" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active mx-1" *ngIf="isLoggedIn$ | async" aria-current="page" routerLink="/home">Inicio</a>
+            <a class="nav-link active mx-1" *ngIf="!(isLoggedIn$ | async)" aria-current="page" routerLink="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1" href="#">Explorar</a>
+            <a class="nav-link mx-1" routerLink="/explore">Explorar</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" routerLink="/login" *ngIf="!(isLoggedIn$ | async)">
               Ingresar
             </a>
-            <a class="nav-link dropdown-toggle" *ngIf="isLoggedIn$ | async" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" *ngIf="isLoggedIn$ | async" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img class="d-none d-lg-inline img-fluid rounded" src="/assets/img/user/user.png"/>
               <span class="d-inline d-lg-none">
                 Dylan Barbona
               </span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Tu perfil</a></li>
-              <li><a class="dropdown-item" href="#">Configuraciones</a></li>
+              <li><a class="dropdown-item" routerLink="/profile">Tu perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/profile/config">Configuraciones</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" routerLink="/logout">Cerrar sesión</a></li>
             </ul>
           </li>
         </ul>

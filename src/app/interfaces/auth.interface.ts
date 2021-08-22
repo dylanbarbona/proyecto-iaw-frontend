@@ -6,6 +6,16 @@ export interface Auth {
 }
 
 export class EmptyAuth implements Auth, Register {
+  private static instance: EmptyAuth;
+
+  private constructor(){}
+
+  public static getInstance(){
+    if(!this.instance)
+      this.instance = new EmptyAuth()
+    return this.instance
+  }
+
   username = ''
   password = ''
   name = ''

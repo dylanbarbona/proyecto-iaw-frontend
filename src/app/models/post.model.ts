@@ -16,7 +16,7 @@ export interface Post {
 
 export class EmptyPost implements Post {
   _id: string = '';
-  user: string | User = new EmptyUser();
+  user: string | User = EmptyUser.getInstance();
   categories: string[] | Category[] = [];
   description: string = '';
   metadata: Metadata[] = [];
