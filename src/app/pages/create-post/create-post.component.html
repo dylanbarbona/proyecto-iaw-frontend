@@ -1,27 +1,39 @@
 <app-template>
-  <div class="container-fluid py-5" style="min-height: 100vh;">
+  <div class="container-fluid py-5 mt-5" style="min-height: 100vh;">
     <div class="row justify-content-center">
       <div class="col-12 col-md-6">
         <p class="text-center">
           Subir fotos y vídeos
-            Las fotos que subas se van a distribuir gratis bajo la licencia de Pexels. Más información
-            Para aumentar tus posibilidades de tener contenido destacado, asegúrate de que el contenido que subes sigue nuestras directrices.
-            Revisaremos el contenido que has presentado. Si lo seleccionamos, recibirás una notificación por correo electrónico y el contenido aparecerá en las búsquedas.
+            Las fotos que subas se van a distribuir gratis bajo la licencia de Protogram. <a href="">Más información</a>
         </p>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-md-6">
-        <form>
+        <form (submit)="upload()">
           <div class="form-group my-2">
             <label for="formFileMultiple" class="form-label">Puede subir múltiples imágenes o vídeos</label>
-            <input class="form-control" type="file" id="formFileMultiple" multiple />
+            <input class="form-control" type="file" id="formFileMultiple" (change)="selectFiles($event)"/>
           </div>
           <div class="form-group my-2">
             <label for="formSelectCategories" class="form-label">Seleccione las categorías</label>
             <select class="form-select js-data-example-ajax" multiple="multiple"></select>
           </div>
+          <div class="row form-group my-2 justify-content-end w-100">
+            <button type="submit" class="btn btn-xs btn-success col-2 mt-2">Subir</button>
+          </div>
         </form>
+
+        <div class="card mt-3" *ngIf="fileInfos.length > 0">
+          <div class="card-header">Imagenes</div>
+          <ul
+            class="list-group list-group-flush"
+            *ngFor="let file of fileInfos">
+            <li class="list-group-item">
+              <img src="{{ file }}" class="img-fluid">
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

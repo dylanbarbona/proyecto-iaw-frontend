@@ -5,15 +5,12 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../store/reducers';
 import { interval, Observable, pipe } from 'rxjs';
 import {
-  selectProfileFeature,
   selectErrorFeature,
   selectIsLoadingFeature,
   selectIsLoggedInFeature } from '../../store/selectors/auth.selectors';
 
-import { User } from 'src/app/models/user.model';
-import { Auth } from '../../interfaces/auth.interface';
 import { LoginUser } from 'src/app/store/actions/auth.action';
-import { concatMap, debounceTime, delay, first, mapTo, switchMap, throttleTime } from 'rxjs/operators';
+import { first, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-card',

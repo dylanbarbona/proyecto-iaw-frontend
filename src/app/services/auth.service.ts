@@ -7,8 +7,6 @@ import { Auth } from '../interfaces/auth.interface';
 import { Register } from '../interfaces/register.interface';
 import { User } from '../models/user.model';
 
-import jwt_decode from 'jwt-decode';
-
 interface AuthResponse {
   ok: boolean,
   user: User

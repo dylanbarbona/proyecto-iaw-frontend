@@ -63,11 +63,11 @@ export class PostService {
   }
 
   create(input: CreatePostInput): Observable<Post> {
-    return this.http.post<Post>(environment.HOST + this.POST_URL, input, { withCredentials: true })
+    return this.http.post<Post>(environment.HOST + this.POST_URL, input, { reportProgress: true, withCredentials: true })
   }
 
   update({ _id }: SearchPostInput, input: UpdatePostInput): Observable<Post> {
-    return this.http.put<Post>(environment.HOST + this.POST_URL + '/' + _id, input, { withCredentials: true })
+    return this.http.put<Post>(environment.HOST + this.POST_URL + '/' + _id, input, { reportProgress: true, withCredentials: true })
   }
 
   delete({ _id }: SearchPostInput): Observable<Post> {

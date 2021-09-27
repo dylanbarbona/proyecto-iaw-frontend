@@ -6,6 +6,11 @@ export const selectPostState = createFeatureSelector<AppState, PostState>(postFe
 
 export const selectPostFeature = createSelector(
   selectPostState,
+  (state: PostState) => state
+)
+
+export const selectSinglePostFeature = createSelector(
+  selectPostState,
   (state: PostState) => state.post
 )
 

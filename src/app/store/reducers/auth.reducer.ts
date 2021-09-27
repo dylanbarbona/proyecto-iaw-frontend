@@ -3,8 +3,6 @@ import * as authActions from '../actions/auth.action';
 import { EmptyUser, User } from '../../models/user.model';
 import { Auth, EmptyAuth } from '../../interfaces/auth.interface';
 import { Register } from '../../interfaces/register.interface';
-import { Injectable } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 
 export const authFeatureKey = 'auth';
 

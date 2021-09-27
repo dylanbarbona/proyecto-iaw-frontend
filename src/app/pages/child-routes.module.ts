@@ -12,9 +12,9 @@ import { SearchComponent } from './search/search.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 
 const childRoutes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: '', component: IndexComponent, canActivate: [GuessGuard], canLoad: [GuessGuard], },
+  { path: 'login', component: LoginComponent, canActivate: [GuessGuard], canLoad: [GuessGuard], },
+  { path: 'register', component: RegisterComponent, canActivate: [GuessGuard], canLoad: [GuessGuard], },
   { path: 'search', component: SearchComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], canLoad: [AuthGuard], },
   { path: 'user', component: ProfileComponent, canActivate: [AuthGuard], canLoad: [AuthGuard], },
