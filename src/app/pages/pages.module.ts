@@ -18,7 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { ComponentsModule } from '../components/components.module';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SearchComponent } from './search/search.component';
+import { ShowPostComponent } from './show-post/show-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { SearchComponent } from './search/search.component';
     RegisterComponent,
     CreatePostComponent,
     ProfileComponent,
-    SearchComponent
+    ShowPostComponent
   ],
   imports: [
     CommonModule,

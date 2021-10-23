@@ -6,7 +6,7 @@ import { EmptyUser, User } from './user.model';
 
 export interface Post {
   _id: string
-  user: string | User
+  user: User
   categories: string[] | Category[]
   description: string
   metadata: Metadata[]
@@ -26,7 +26,7 @@ export class EmptyPost implements Post {
   }
 
   _id: string = '';
-  user: string | User = EmptyUser.getInstance();
+  user: User = EmptyUser.getInstance();
   categories: string[] | Category[] = [];
   description: string = '';
   metadata: Metadata[] = [];

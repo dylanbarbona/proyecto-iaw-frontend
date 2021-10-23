@@ -13,6 +13,8 @@ import { AppState } from 'src/app/store/reducers';
 })
 export class HeaderComponent implements OnInit {
   @Input()
+  enable_sidebar = true
+  @Input()
   background = 'bg-transparent'
 
   isLoggedIn$: Observable<boolean> = this.store.select(authSelectors.selectIsLoggedInFeature)

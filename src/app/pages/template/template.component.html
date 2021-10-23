@@ -1,11 +1,11 @@
-<div class="container-fluid p-0 m-0">
-  <div class="row m-0 p-0 pb-3">
-      <app-header background="bg-dark"></app-header>
-  </div>
+<div id="wrapper">
+  <app-header></app-header>
+
+  <ng-container *ngIf="sidebar">
+    <app-sidebar></app-sidebar>
+  </ng-container>
 
   <ng-content></ng-content>
 
-  <div class="row m-0 p-0">
-    <app-footer class="p-0 m-0"></app-footer>
-  </div>
+  <app-footer></app-footer>
 </div>

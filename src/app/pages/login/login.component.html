@@ -1,10 +1,29 @@
-<app-template>
-  <div class="row m-0 p-0 vh-100 align-items-center">
-    <div class="col-12 col-lg-5" style="max-height: 100vh; overflow: hidden;">
-      <app-login-card></app-login-card>
-    </div>
-    <div class="col-12 col-lg-7" style="max-height: 100vh; overflow: hidden;">
-      <app-photo-panel></app-photo-panel>
-    </div>
+<app-header-register></app-header-register>
+<div class="mt-2" style="min-height: 80vh;">
+  <div class="lg:p-12 max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md">
+          <h1 class="lg:text-2xl text-xl font-semibold mb-6">Ingresar</h1>
+
+          <div>
+              <label class="mb-0">Correo electrónico</label>
+              <input id="email" type="email" formControlName="email" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" >
+          </div>
+          <div>
+              <label class="mb-0">Contraseña</label>
+              <input id="password" type="password" formControlName="password" placeholder="Ingrese su contraseña" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+          </div>
+
+          <div>
+              <button type="submit" [disabled]="!loginForm.valid" class="bg-blue-600 font-semibold p-2 mt-3 rounded-md text-center text-white w-full">
+                Iniciar sesión
+              </button>
+          </div>
+          <div>
+            <p class="text-center">
+              ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+            </p>
+          </div>
+      </form>
   </div>
-</app-template>
+</div>
+<app-footer-register></app-footer-register>

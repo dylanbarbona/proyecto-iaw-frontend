@@ -10,12 +10,11 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ErrorComponent } from './error/error.component';
 import { SearchComponent } from './search/search.component';
 import { IndexCarouselComponent } from './index-carousel/index-carousel.component';
-import { LoginCardComponent } from './login-card/login-card.component';
 import { PhotoPanelComponent } from './photo-panel/photo-panel.component';
-import { RegisterCardComponent } from './register-card/register-card.component';
 import { SearchCarouselComponent } from './search-carousel/search-carousel.component';
 import { HomeTabsComponent } from './home-tabs/home-tabs.component';
 import { PostComponent } from './post/post.component';
+import { OpenModalComponent } from './open-modal/open-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +22,11 @@ import { PostComponent } from './post/post.component';
     ErrorComponent,
     SearchComponent,
     IndexCarouselComponent,
-    LoginCardComponent,
     PhotoPanelComponent,
-    RegisterCardComponent,
     SearchCarouselComponent,
     HomeTabsComponent,
-    PostComponent
+    PostComponent,
+    OpenModalComponent
   ],
   imports: [
     CommonModule,
@@ -43,12 +41,11 @@ import { PostComponent } from './post/post.component';
     ErrorComponent,
     SearchComponent,
     IndexCarouselComponent,
-    LoginCardComponent,
     PhotoPanelComponent,
-    RegisterCardComponent,
     SearchCarouselComponent,
     HomeTabsComponent,
-    PostComponent
+    PostComponent,
+    OpenModalComponent
   ]
 })
 export class ComponentsModule { }

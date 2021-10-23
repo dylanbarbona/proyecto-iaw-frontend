@@ -31,10 +31,10 @@ export const postReducer = createReducer(
   on(postActions.getPostsByDescription, (state) => ({ ...state, isLoading: true, error: false, posts: [] })),
   on(postActions.GetPostsByUser, (state) => ({ ...state, isLoading: true, error: false, posts: [] })),
 
-  on(postActions.GetMoreRandomPosts, (state) => ({ ...state, isLoading: true, error: false, posts: [] })),
-  on(postActions.GetMoreFollowingPosts, (state) => ({ ...state, isLoading: true, error: false, posts: [] })),
-  on(postActions.GetMorePostsByDescription, (state) => ({ ...state, isLoading: true, error: false, posts: [] })),
-  on(postActions.GetMorePostsByUser, (state) => ({ ...state, isLoading: true, error: false, posts: [] })),
+  on(postActions.GetMoreRandomPosts, (state) => ({ ...state, isLoading: true, error: false })),
+  on(postActions.GetMoreFollowingPosts, (state) => ({ ...state, isLoading: true, error: false })),
+  on(postActions.GetMorePostsByDescription, (state) => ({ ...state, isLoading: true, error: false })),
+  on(postActions.GetMorePostsByUser, (state) => ({ ...state, isLoading: true, error: false })),
 
   on(postActions.GetPostsComplete, (state, { posts }) => ({ ...state, isLoading: false, posts: state.posts.concat(posts) })),
   on(postActions.GetPostsError, (state) => ({ ...state, isLoading: false, error: true })),

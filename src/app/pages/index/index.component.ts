@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-
-import * as authSelectors from '../../store/selectors/auth.selectors'
-import * as authActions from '../../store/actions/auth.action'
-import { AppState } from 'src/app/store/reducers';
+import { Post } from '../../models/post.model';
+import { AppState } from '../../store/reducers';
+import * as postSelector from '../../store/selectors/post.selectors';
+import * as postActions from '../../store/actions/post.action';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-index',
@@ -13,8 +14,9 @@ import { AppState } from 'src/app/store/reducers';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+    constructor(private readonly store: Store<AppState>){ }
 
-  constructor(private readonly store: Store<AppState>){ }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.store.dispatch(postActions.GetRandomPosts({ search: { } }))
+  }
 }

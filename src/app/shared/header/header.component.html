@@ -1,61 +1,137 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" [ngClass]="background">
-  <div class="container-fluid">
-    <div class="row justify-content-start align-items-center w-100 w-lg-25">
-      <div class="col d-flex justify-content-start justify-content-lg-end">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 32 32">
-          <path d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" fill="#05A081">
-          </path>
-          <path
-            d="M13 21h3.863v-3.752h1.167a3.124 3.124 0 1 0 0-6.248H13v10zm5.863 2H11V9h7.03a5.124 5.124 0 0 1 .833 10.18V23z"
-            fill="#fff">
-          </path>
-        </svg>
+<header>
+  <div class="header_wrap">
+    <div class="header_inner mcontainer">
+      <div class="left_side">
+
+        <span *ngIf="isLoggedIn$ | async" class="slide_menu" uk-toggle="target: #wrapper ; cls: is-collapse is-active">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M3 4h18v2H3V4zm0 7h12v2H3v-2zm0 7h18v2H3v-2z" fill="currentColor"></path>
+          </svg>
+        </span>
+
+        <div id="logo">
+          <a [routerLink]="((isLoggedIn$ | async) == true) ? '/home' : '/' ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 32 32">
+              <path d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" fill="#05A081"></path>
+              <path d="M13 21h3.863v-3.752h1.167a3.124 3.124 0 1 0 0-6.248H13v10zm5.863 2H11V9h7.03a5.124 5.124 0 0 1 .833 10.18V23z" fill="#fff"></path>
+              </svg>
+          </a>
+        </div>
       </div>
-      <div class="col d-none d-lg-flex justify-content-start">
-        <a class="navbar-brand d-none d-lg-inline-block" routerLink="#">Protogram</a>
-      </div>
-      <div class="col-7 col-sm-9 col-lg-6">
-        <!-- <app-search></app-search> -->
-      </div>
-      <div class="col d-flex d-lg-none justify-content-end">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-header"
-          aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div class="col collapse navbar-collapse col-3 justify-self-end" id="navbar-header">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0 d-flex justify-content-start justify-content-lg-end align-items-lg-center">
-          <li class="nav-item">
-            <a class="nav-link active mx-1" *ngIf="isLoggedIn$ | async" aria-current="page" routerLink="/home">Inicio</a>
-            <a class="nav-link active mx-1" *ngIf="!(isLoggedIn$ | async)" aria-current="page" routerLink="/">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-1" routerLink="/explore">Explorar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active mx-1" *ngIf="isLoggedIn$ | async" aria-current="page" routerLink="/create">Subir</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" routerLink="/login" *ngIf="!(isLoggedIn$ | async)">
-              Ingresar
+
+      <!-- search icon for mobile -->
+      <div class="header-search-icon" uk-toggle="target: #wrapper ; cls: show-searchbox"> </div>
+      <app-search></app-search>
+
+      <div class="right_side">
+          <div class="header_widgets" *ngIf="(isLoggedIn$ | async) else no_logged_in">
+            <a href="#" class="is_link">Subir</a>
+
+            <a href="#" class="is_icon" uk-tooltip="title: Notificaciones">
+              <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z">
+                </path>
+              </svg>
+              <span>3</span>
             </a>
-            <a class="nav-link dropdown-toggle" *ngIf="isLoggedIn$ | async" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="d-none d-lg-inline img-fluid rounded" src="/assets/img/user/user.png"/>
-              <span class="d-inline d-lg-none">
-                Dylan Barbona
-              </span>
+            <div uk-drop="mode: click" class="header_dropdown">
+              <div class="dropdown_scrollbar" data-simplebar>
+                <div class="drop_headline">
+                  <h4>Notificaciones</h4>
+                </div>
+                <ul>
+                  <li>
+                    <a href="#">
+                      <div class="drop_avatar">
+                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                      </div>
+                      <span class="drop_icon bg-gradient-primary">
+                        <i class="icon-feather-thumbs-up"></i>
+                      </span>
+                      <div class="drop_text">
+                        <p>
+                          <strong>Adrian Mohani</strong> Like Your Comment On Video
+                          <span class="text-link">Learn Prototype Faster </span>
+                        </p>
+                        <time> 2 hours ago </time>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="not-read">
+                    <a href="#">
+                      <div class="drop_avatar status-online"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                      </div>
+                      <div class="drop_text">
+                        <p>
+                          <strong>Stella Johnson</strong> Replay Your Comments in
+                          <span class="text-link">Adobe XD Tutorial</span>
+                        </p>
+                        <time> 9 hours ago </time>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div class="drop_avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                      </div>
+                      <span class="drop_icon bg-gradient-primary">
+                        <i class="icon-feather-thumbs-up"></i>
+                      </span>
+                      <div class="drop_text">
+                        <p>
+                          <strong>Alex Dolgove</strong> Added New Review In Video
+                          <span class="text-link">Full Stack PHP Developer</span>
+                        </p>
+                        <time> 12 hours ago </time>
+                      </div>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+            <a href="#">
+              <img src="assets/images/avatars/avatar-2.jpg" class="is_avatar" alt="">
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/profile">Tu perfil</a></li>
-              <li><a class="dropdown-item" routerLink="/profile/config">Configuraciones</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" routerLink="/logout">Cerrar sesión</a></li>
-            </ul>
-          </li>
-        </ul>
+            <div uk-drop="mode: click; offset:5" class="header_dropdown profile_dropdown">
+
+              <a href="timeline.html" class="user">
+                <div class="user_avatar">
+                  <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                </div>
+                <div class="user_name">
+                  <div> Stella Johnson </div>
+                  <span> @johnson</span>
+                </div>
+              </a>
+              <hr>
+              <a href="page-setting.html">
+                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Mi cuenta
+              </a>
+              <a href="group-feed.html">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+                Cerrar sesión
+              </a>
+            </div>
+          </div>
+
+        <ng-template #no_logged_in>
+          <div class="header_widgets">
+            <a routerLink="/login" class="is_link">Ingresar</a>
+            <a routerLink="/register" class="bg-gray-200 is_link">Registrarse</a>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
-</nav>
+</header>

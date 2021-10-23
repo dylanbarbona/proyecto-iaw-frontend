@@ -1,0 +1,29 @@
+<app-template>
+  <div class="container mt-5 pt-4" *ngIf="post$ | async">
+    <div class="w-100 h-100 row justify-content-center align-items-start" style="min-height: 80vh;">
+
+      <div class="col-6 d-flex justify-content-end">
+        <img class="img-fluid" style="height: 70vh; width: auto;" src="{{ (post$ | async)!.metadata[0].url }}">
+      </div>
+
+      <div class="col-6">
+        <div class="container-fluid">
+          <div class="row justify-content-start">
+            <div class="col">
+              <b style="margin-right: .75em;">@{{ (post$ | async)!.user.username }}</b>
+              <button class="btn btn-sm btn-success">Seguir</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              {{ (post$ | async)!.description }}
+            </div>
+          </div>
+          <div class="row">
+            {{ (post$ | async | json) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-template>
