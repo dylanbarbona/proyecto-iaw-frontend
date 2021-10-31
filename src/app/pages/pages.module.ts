@@ -19,6 +19,7 @@ import { ComponentsModule } from '../components/components.module';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ShowPostComponent } from './show-post/show-post.component';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ShowPostComponent } from './show-post/show-post.component';
     MdbModule,
     NgrxModule,
     ComponentsModule,
-    SharedModule
+    SharedModule,
+    NgxMasonryModule,
   ]
 })
 export class PagesModule { }

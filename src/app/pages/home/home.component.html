@@ -3,16 +3,7 @@
     <div class="mcontainer">
       <div class="flex justify-between items-center relative md:mb-4 mb-3">
         <div class="flex-1">
-          <h2 class="text-2xl font-semibold"> Photos </h2>
-          <nav class="responsive-nav border-b md:m-0 -mx-4">
-            <ul>
-              <li class="active"><a href="#" class="lg:px-2"> Photos of you <span> 230</span> </a></li>
-              <li><a href="#" class="lg:px-2"> Recently added </a></li>
-              <li><a href="#" class="lg:px-2"> Family </a></li>
-              <li><a href="#" class="lg:px-2"> University </a></li>
-              <li><a href="#" class="lg:px-2"> Albums </a></li>
-            </ul>
-          </nav>
+          <h2 class="text-2xl font-semibold">Inicio</h2>
         </div>
         <a href="#offcanvas-create" uk-toggle
           class="flex items-center justify-center z-10 h-10 w-10 rounded-full bg-blue-600 text-white absolute right-0"
@@ -25,260 +16,30 @@
         </a>
       </div>
 
-      <div class="grid md:grid-cols-4 grid-cols-2 gap-3 mt-5">
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-1.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
+      <div class="container-fluid">
+        <ngx-masonry>
+          <div ngxMasonryItem class="masonry-item mx-2 my-2" *ngFor="let image of images">
+            <div class="justify-center max-w-full rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+              <img class="img-fluid img-rounded img-photo" [src]="image" />
+              <div
+                class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
               </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
+              <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
+                <div class="flex-1">
+                  <div class="text-lg">Image description</div>
+                  <div class="flex space-x-3 lg:flex-initial text-sm">
+                    <a href="#">Like</a>
+                    <a href="#">Comentar</a>
+                    <a href="#">Descargar</a>
+                  </div>
+                </div>
+                <i class="btn-down text-2xl uil-cloud-download px-1"></i>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-2.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/avatars/avatar-3.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-4.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/avatars/avatar-7.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/avatars/avatar-4.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-1.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-2.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-3.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-2.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-3.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            class="bg-green-400 max-w-full lg:h-56 h-48 rounded-lg relative overflow-hidden shadow uk-transition-toggle">
-            <img src="assets/images/post/img-2.jpg" class="w-full h-full absolute object-cover inset-0">
-            <!-- overly-->
-            <div
-              class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
-            </div>
-            <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
-              <div class="flex-1">
-                <div class="text-lg"> Image description </div>
-                <div class="flex space-x-3 lg:flex-initial text-sm">
-                  <a href="#"> Like</a>
-                  <a href="#"> Comment </a>
-                  <a href="#"> Share </a>
-                </div>
-              </div>
-              <i class="btn-down text-2xl uil-cloud-download px-1"></i>
-            </div>
-          </div>
-        </div>
+        </ngx-masonry>
       </div>
+
     </div>
   </div>
 </app-template>

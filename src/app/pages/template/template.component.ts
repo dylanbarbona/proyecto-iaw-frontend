@@ -9,9 +9,7 @@ export class TemplateComponent implements OnInit {
   @Input()
   sidebar: boolean = false
 
-  constructor() { }
+  constructor(){ }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -14,6 +14,8 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+  background = `https://picsum.photos/id/${Math.floor(Math.random()*100)}/1366/768`;
+
     constructor(private readonly store: Store<AppState>){ }
 
   ngOnInit(): void {

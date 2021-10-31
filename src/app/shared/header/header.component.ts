@@ -1,10 +1,9 @@
-import { Component, HostListener, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import { EmptyUser, User } from '../../models/user.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 import * as authSelectors from '../../store/selectors/auth.selectors'
-import * as authActions from '../../store/actions/auth.action'
-import { AppState } from 'src/app/store/reducers';
+import { AppState } from '../../store/reducers';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +15,10 @@ export class HeaderComponent implements OnInit {
   enable_sidebar = true
   @Input()
   background = 'bg-transparent'
-
   isLoggedIn$: Observable<boolean> = this.store.select(authSelectors.selectIsLoggedInFeature)
+  profile$: Observable<User> = this.store.select(authSelectors.selectProfileFeature)
 
-  constructor(private readonly store: Store<AppState>){ }
+  constructor(private readonly store: Store<AppState>){}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 }
