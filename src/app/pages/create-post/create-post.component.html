@@ -1,20 +1,58 @@
 <app-template>
-  <div class="container-fluid py-5 mt-5" style="min-height: 100vh;">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-6">
-        <p class="text-center">
-          Subir fotos y vídeos
-            Las fotos que subas se van a distribuir gratis bajo la licencia de Protogram. <a href="">Más información</a>
-        </p>
+  <div class="mcontainer py-24">
+    <div class="max-w-2xl m-auto shadow-md rounded-md bg-white lg:mt-20">
+
+      <div class="text-center border-b py-4">
+        <h3 class="font-bold text-lg">Crear nueva publicación</h3>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-6">
-        <form (submit)="upload()">
-          <div class="form-group my-2">
-            <label for="formFileMultiple" class="form-label">Puede subir múltiples imágenes o vídeos</label>
-            <input class="form-control" type="file" id="formFileMultiple" (change)="selectFiles($event)"/>
+
+      <form (submit)="upload()">
+        <div class="p-7 space-y-5">
+          <div class="line">
+            <label for="formPostTitle"></label>
+            <input class="line__input" id="formPostTitle" name="formPostTitle" type="text" onkeyup="this.setAttribute('value', this.value);" value="" autocomplete="off">
+            <span for="username" class="line__placeholder">Título</span>
           </div>
+
+          <div class="line h-16">
+            <label for="formSelectCategories">Seleccione las categorías</label>
+            <select class="js-data-example-ajax shadow-none selectpicker with-border" multiple="multiple"></select>
+          </div>
+
+          <div class="line h-32">
+            <textarea class="line__input h-32" id="formPostDescription" name="formPostDescription" type="text" onkeyup="this.setAttribute('value', this.value);" value="" autocomplete="off"></textarea>
+            <span for="formPostDescription" class="line__placeholder">Descripción</span>
+          </div>
+
+          <div class="line h-40 mb-4">
+            <div class="relative h-40 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
+                <div class="absolute">
+                    <div class="flex flex-col items-center ">
+                      <i class="fa fa-cloud-upload fa-3x text-gray-200"></i>
+                      <span class="block text-gray-400 font-normal">Adjuntá tus imágenes/videos acá</span>
+                      <span class="block text-gray-400 font-normal">o</span>
+                      <span class="block text-blue-400 font-normal">Busca los archivos</span>
+                    </div>
+                </div>
+                <input type="file" class="h-full w-full opacity-0" id="formFileMultiple" (change)="selectFiles($event)">
+            </div>
+            <div class="flex justify-between items-center text-gray-400">
+              <span>.jpg, .png, .mp4</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t flex justify-between lg:space-x-10 p-6 bg-gray-50 rounded-b-md">
+          <button type="button" class="button">
+            Publicar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+          <!--
           <div class="form-group my-2">
             <label for="formSelectCategories" class="form-label">Seleccione las categorías</label>
             <select class="form-select js-data-example-ajax" multiple="multiple"></select>
@@ -36,5 +74,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </app-template>

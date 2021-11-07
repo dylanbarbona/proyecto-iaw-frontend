@@ -18,7 +18,8 @@ const childRoutes: Routes = [
   { path: 'home', component: HomeComponent }, // canActivate: [AuthGuard], canLoad: [AuthGuard], },
   { path: 'profile', component: ProfileComponent }, // canActivate: [AuthGuard], canLoad: [AuthGuard], },
   { path: 'create', component: CreatePostComponent }, // canActivate: [AuthGuard], canLoad: [AuthGuard] },
-  { path: 'post/:id', component: ShowPostComponent }
+  { path: 'post/:id', component: ShowPostComponent },
+  { path: 'create', component: CreatePostComponent }
 ]
 
 @NgModule({

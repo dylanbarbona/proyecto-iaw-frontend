@@ -1,0 +1,21 @@
+<ngx-masonry>
+  <div ngxMasonryItem class="masonry-item mx-2 my-2" *ngFor="let post of posts" style="cursor: pointer;" [routerLink]="'/post/' + post._id">
+    <div class="justify-start max-w-full rounded-lg relative overflow-hidden shadow uk-transition-toggle">
+      <img class="img-fluid img-rounded img-photo" [src]="post.metadata[0].url" />
+      <div
+        class="-bottom-12 absolute bg-gradient-to-b from-transparent h-1/2 to-gray-800 uk-transition-slide-bottom-small w-full">
+      </div>
+      <div class="absolute bottom-0 w-full p-3 text-white uk-transition-slide-bottom-small flex items-center">
+        <div class="flex-1">
+          <div class="text-lg">Image description</div>
+          <div class="flex space-x-3 lg:flex-initial text-sm">
+            <a href="#" class="text-white">Me gusta</a>
+            <a href="#" class="text-white">Comentar</a>
+            <a href="#" class="text-white">Descargar</a>
+          </div>
+        </div>
+        <i class="btn-down text-2xl uil-cloud-download px-1"></i>
+      </div>
+    </div>
+  </div>
+</ngx-masonry>

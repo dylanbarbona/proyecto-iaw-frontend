@@ -31,7 +31,8 @@ import { NgxMasonryModule } from 'ngx-masonry';
     RegisterComponent,
     CreatePostComponent,
     ProfileComponent,
-    ShowPostComponent
+    ShowPostComponent,
+    CreatePostComponent
   ],
   imports: [
     CommonModule,
