@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { interval, Observable, pipe } from 'rxjs';
-import { first, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/reducers';
@@ -31,9 +30,7 @@ export class LoginComponent implements OnInit {
     this.isLoggedIn$ = store.select(selectIsLoggedInFeature)
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   submitForm(): void {
     const { email, password } = this.loginForm.value
